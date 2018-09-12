@@ -1,0 +1,15 @@
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\bin\Debug\NewsPortal.Data.dll.config
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\bin\Debug\NewsPortal.Data.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\bin\Debug\NewsPortal.Data.pdb
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\bin\Debug\EntityFramework.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\bin\Debug\EntityFramework.xml
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.csprojAssemblyReference.cache
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.csproj.CoreCompileInputs.cache
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.csproj.CopyComplete
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.pdb
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.Migrations.CreateDb.resources
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.csproj.GenerateResource.cache
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.Migrations.AddRole.resources
