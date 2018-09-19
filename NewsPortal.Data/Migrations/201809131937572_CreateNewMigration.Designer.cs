@@ -7,13 +7,13 @@ namespace NewsPortal.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CreateDb : IMigrationMetadata
+    public sealed partial class CreateNewMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateNewMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809122002080_CreateDb"; }
+            get { return "201809131937572_CreateNewMigration"; }
         }
         
         string IMigrationMetadata.Source

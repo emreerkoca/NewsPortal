@@ -49,15 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext\NewsContext.cs" />
-    <Compile Include="Migrations\201809122002080_CreateDb.cs" />
-    <Compile Include="Migrations\201809122002080_CreateDb.Designer.cs">
-      <DependentUpon>201809122002080_CreateDb.cs</DependentUpon>
+    <Compile Include="Migrations\201809131840410_Create.cs" />
+    <Compile Include="Migrations\201809131840410_Create.Designer.cs">
+      <DependentUpon>201809131840410_Create.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809122231293_AddRole.cs" />
-    <Compile Include="Migrations\201809122231293_AddRole.Designer.cs">
-      <DependentUpon>201809122231293_AddRole.cs</DependentUpon>
+    <Compile Include="Migrations\201809131937572_CreateNewMigration.cs" />
+    <Compile Include="Migrations\201809131937572_CreateNewMigration.Designer.cs">
+      <DependentUpon>201809131937572_CreateNewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Image.cs" />
+    <Compile Include="Model\News.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,11 +69,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809122002080_CreateDb.resx">
-      <DependentUpon>201809122002080_CreateDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809131840410_Create.resx">
+      <DependentUpon>201809131840410_Create.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809122231293_AddRole.resx">
-      <DependentUpon>201809122231293_AddRole.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809131937572_CreateNewMigration.resx">
+      <DependentUpon>201809131937572_CreateNewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
