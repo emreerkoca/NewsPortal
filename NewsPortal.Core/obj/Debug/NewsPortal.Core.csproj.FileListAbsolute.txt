@@ -1,0 +1,15 @@
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\NewsPortal.Core.dll.config
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\NewsPortal.Core.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\NewsPortal.Core.pdb
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\EntityFramework.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\EntityFramework.SqlServer.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\NewsPortal.Data.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\NewsPortal.Data.pdb
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\NewsPortal.Data.dll.config
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\EntityFramework.xml
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\bin\Debug\EntityFramework.SqlServer.xml
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\obj\Debug\NewsPortal.Core.csprojAssemblyReference.cache
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\obj\Debug\NewsPortal.Core.csproj.CoreCompileInputs.cache
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\obj\Debug\NewsPortal.Core.csproj.CopyComplete
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\obj\Debug\NewsPortal.Core.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Core\obj\Debug\NewsPortal.Core.pdb

@@ -1,4 +1,5 @@
-﻿using NewsPortal.Data.DataContext;
+﻿using NewsPortal.Core.Infstructure;
+using NewsPortal.Data.DataContext;
 using NewsPortal.Data.Model;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace NewsPortal.Core.Repository
 {
-    public class RoleRepository
+    public class RoleRepository : IRoleRepository
     {
         private readonly NewsContext _context = new NewsContext();
 
