@@ -48,12 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infstructure\ICategoryRepository.cs" />
     <Compile Include="Infstructure\IImageRepository.cs" />
     <Compile Include="Infstructure\INewsRepository.cs" />
     <Compile Include="Infstructure\IRepository.cs" />
     <Compile Include="Infstructure\IRoleRepository.cs" />
     <Compile Include="Infstructure\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\ImageRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\NewsRepository.cs" />

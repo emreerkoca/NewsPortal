@@ -11,11 +11,9 @@ namespace NewsPortal.Data.DataContext
     public class NewsContext : DbContext
     {
         public DbSet<User> User { get; set; }
-
         public DbSet<Role> Role { get; set; }
-
         public DbSet<News> News { get; set; }
-
         public DbSet<Image> Image { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

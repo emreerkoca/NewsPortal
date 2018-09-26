@@ -14,6 +14,7 @@ namespace NewsPortal.Data.Model
         [Key]
         public int ID { get; set; }
 
+        [Required]
         [MinLength(2,ErrorMessage ="Category name can' t be less than {0} characters."), MaxLength(150, ErrorMessage = "Category name can' t be more than 150 characters")]
         public string CategoryName { get; set; }
 
@@ -23,6 +24,8 @@ namespace NewsPortal.Data.Model
         public string URL { get; set; }
 
         public bool IsActive { get; set; }
+
+        public virtual User User { get; set; }
 
         public virtual ICollection<News> News { get; set; }
     }

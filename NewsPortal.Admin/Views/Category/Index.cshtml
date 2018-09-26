@@ -1,0 +1,64 @@
+﻿@model IEnumerable<NewsPortal.Data.Model.Category>
+@{
+    ViewBag.Title = "Category List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    
+    <div class="row">
+        <!-- Responsive table -->
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <header class="panel-heading">@ViewBag.Title</header>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Category Name</th>
+                                    <th>Top Category</th>
+                                    <th>State</th>
+                                    <th>Adding by</th>
+                                    <th>Operations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td><span class="label label-success">@item.ID</span></td>
+                                        <td>@item.CategoryName</td>
+                                        <td>@item.ParentID</td>
+                                        <td>
+                                            @if (item.IsActive)
+                                            {
+                                                <b class="label label-success">Active</b>
+                                            }
+                                            else
+                                            {
+                                                <b class="label label-danger">Passive</b>
+                                            }
+                                        </td>
+                                        <td>@item.User.UserName</td>
+                                        <td>
+                                            <button class="btn btn-default btn-sm">Edit</button>
+                                            @Html.ActionLink("Delete","Delete", new { ID = item.ID }, new { onclick="return confirm('Are you sure want to delete record?')" })
+                                            @*<button class="btn btn-default btn-sm">Delete</button>*@
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Responsive table -->
+    </div>
+  
+</div>
+
+

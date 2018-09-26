@@ -25,6 +25,7 @@ namespace NewsPortal.Admin.Class
             builder.RegisterType<ImageRepository>().As<IImageRepository>();
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             builder.RegisterType<RoleRepository>().As<IRoleRepository>();
+            builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
