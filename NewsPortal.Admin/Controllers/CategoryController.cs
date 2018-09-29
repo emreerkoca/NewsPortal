@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using NewsPortal.Admin.CustomFilter;
 
 namespace NewsPortal.Admin.Controllers
 {
@@ -20,10 +22,12 @@ namespace NewsPortal.Admin.Controllers
         }
         #endregion
 
-        public ActionResult Index()
+        #region List Category
+        public ActionResult Index(int page = 1)
         {
-            return View(_categoryRepository.GetAll().ToList());
-        }
+            return View(_categoryRepository.GetAll().OrderByDescending(x => x.ID).ToPagedList(page, 10));
+        } 
+        #endregion
 
         #region Insert Category
         [HttpGet]
@@ -58,17 +62,49 @@ namespace NewsPortal.Admin.Controllers
         #endregion
 
         #region Delete Category
-        public ActionResult Delete(int ID)
+        public JsonResult Delete(int ID)
         {
             Category deleteCategory = _categoryRepository.GetById(ID);
             if(deleteCategory == null)
             {
-                throw new Exception("Category not found");
+                return Json(new ResultJson { Success = false, Message = "Category not found!" });
             }
             _categoryRepository.Delete(ID);
             _categoryRepository.Save();
 
-            return RedirectToAction("Index", "Category");
+            return Json(new ResultJson { Success = true, Message = "Delete category operation is successful!" });
+        }
+        #endregion
+
+        #region Update Category
+        [HttpGet]
+        [LoginFilter]
+        public ActionResult Update(int id)
+        {
+            Category dbCategory = _categoryRepository.GetById(id);
+            if(dbCategory == null)
+            {
+                throw new Exception("Category not found");
+            }
+            SetCategoryList();
+            return View(dbCategory);
+        }
+
+        [HttpPost]
+        [LoginFilter]
+        public JsonResult Update(Category category)
+        {
+            //if(ModelState.IsValid)
+            //{
+                Category dbCategory = _categoryRepository.GetById(category.ID);
+                dbCategory.IsActive = category.IsActive;
+                dbCategory.CategoryName = category.CategoryName;
+                dbCategory.ParentID = category.ParentID;
+                dbCategory.URL = category.URL;
+                _categoryRepository.Save();
+                return Json(new ResultJson { Success = true, Message = "Update category operation successful!" });
+            //}
+            //return Json(new ResultJson { Success = false, Message = "An error occured. Update category operation unsuccessful!" });
         }
         #endregion
     }

@@ -81,3 +81,7 @@ D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Admin\obj\Debug\NewsPortal
 D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Admin\obj\Debug\NewsPortal.Admin.csproj.CopyComplete
 D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Admin\obj\Debug\NewsPortal.Admin.dll
 D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Admin\obj\Debug\NewsPortal.Admin.pdb
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Admin\bin\PagedList.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Admin\bin\PagedList.Mvc.dll
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Admin\bin\PagedList.xml
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Admin\bin\PagedList.Mvc.xml

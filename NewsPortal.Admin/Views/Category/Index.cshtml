@@ -1,11 +1,12 @@
-﻿@model IEnumerable<NewsPortal.Data.Model.Category>
+﻿@model PagedList.IPagedList<NewsPortal.Data.Model.Category>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Category List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container-fluid">
-    
+
     <div class="row">
         <!-- Responsive table -->
         <div class="col-md-12">
@@ -43,9 +44,10 @@
                                         </td>
                                         <td>@item.User.UserName</td>
                                         <td>
-                                            <button class="btn btn-default btn-sm">Edit</button>
-                                            @Html.ActionLink("Delete","Delete", new { ID = item.ID }, new { onclick="return confirm('Are you sure want to delete record?')" })
-                                            @*<button class="btn btn-default btn-sm">Delete</button>*@
+                                            @*<button class="btn btn-default btn-sm">Edit</button>*@
+                                            <a href="@Url.Action("Update", "Category", new { ID = item.ID })" class="btn btn-default btn-sm">Edit</a>
+                                            @*@Html.ActionLink("Delete","Delete", new { ID = item.ID }, new { onclick="return confirm('Are you sure want to delete record?')" })*@
+                                            <button class="btn btn-default btn-sm" id="btnDeleteCategory" onclick="DeleteCategory()" data-id="@item.ID">Delete</button>
                                         </td>
                                     </tr>
                                 }
@@ -55,10 +57,11 @@
                     </div>
                 </div>
             </div>
+            @Html.PagedListPager(Model , page => Url.Action("Index", new { page }), PagedListRenderOptions.Classic)
         </div>
         <!-- /Responsive table -->
     </div>
-  
+
 </div>
 
 
