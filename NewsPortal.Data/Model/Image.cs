@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace NewsPortal.Data.Model
 {
     [Table("Image ")]
-    public class Image
+    public class Image : BaseEntity
     {
-        public int ID { get; set; }
+        //public int ID { get; set; }
 
         public string ImageUrl { get; set; }
 

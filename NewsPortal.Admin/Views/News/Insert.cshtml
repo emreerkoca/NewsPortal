@@ -1,0 +1,69 @@
+﻿@model NewsPortal.Data.Model.News
+@{
+    ViewBag.Title = "Insert News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+
+<div class="container-fluid">
+    <!-- Basic form -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <header class="panel-heading">@ViewBag.Title</header>
+                <div class="panel-body">
+                    <form role="form">
+                        @*<div class="form-group">
+                                <label for="exampleInputEmail1">Top Category</label>
+                                @Html.DropDownListFor(model => model., new SelectList(ViewBag.CategoryList, "ID", "CategoryName"), ("Select"), new { @class = "form-control", id = "ParentID" })
+                            </div>*@
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Category </label>
+                            @Html.TextBoxFor(x => x.Title, new { @class = "form-control", id = "newsTitle", placeHolder = "News Title" })
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryUrl">Short Description</label>
+                            @*@Html.TextAreaFor(x => x.ShortDescription, new { @class = "form-control", id = "shortDescription", placeHolder = "Short Description" })*@
+                            @Html.TextArea("ShortDescription")
+                            <script type="text/javascript">
+                                var editor = CKEDITOR.instances['ShortDescription'];
+                                if (editor) {
+                                    editor.destroy(true);
+                                }
+                                CKEDITOR.replace('ShortDescription', {
+                                    enterMode: CKEDITOR.ENTER_BR,
+                                });
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryUrl">Description</label>
+                            @*@Html.TextAreaFor(x => x.Description, new { @class = "form-control", id = "description", placeHolder = "Description" })*@
+                            @Html.TextArea("Description")
+                            <script type="text/javascript">
+                                var editor = CKEDITOR.instances['Description'];
+                                if (editor) {
+                                    editor.destroy(true);
+                                }
+                                CKEDITOR.replace('Description', {
+                                    enterMode: CKEDITOR.ENTER_BR,
+                                });
+                            </script>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryUrl">Showcase Image</label>
+                            <input type="file" name="showcaseImage" accept="image/*" class="form-control" />
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="isActiveCategory" type="checkbox" checked> Is active?
+                            </label>
+                        </div>
+                        <a href="#" class="btn btn-default" onclick="AddCategory()">Save</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

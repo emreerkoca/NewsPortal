@@ -10,7 +10,5 @@ D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.
 D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.csproj.CopyComplete
 D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.dll
 D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.pdb
-D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.Migrations.Create.resources
+D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.Migrations.CreateDb.resources
 D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.csproj.GenerateResource.cache
-D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.Migrations.CreateNewMigration.resources
-D:\Workspace\Visual Studio 2017\NewsPortal\NewsPortal.Data\obj\Debug\NewsPortal.Data.Migrations.AddCategoryTAble.resources

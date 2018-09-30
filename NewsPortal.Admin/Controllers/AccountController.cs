@@ -28,7 +28,7 @@ namespace NewsPortal.Admin.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-            var userControl = _userRepository.GetMany(x => x.Email == user.Email && x.Password == user.Password && x.Active == true).SingleOrDefault();
+            var userControl = _userRepository.GetMany(x => x.Email == user.Email && x.Password == user.Password && x.IsActive == true).SingleOrDefault();
             if(userControl != null)
             {
                 if (userControl.Role.RoleName == "Admin")

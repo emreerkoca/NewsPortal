@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace NewsPortal.Data.Model
 {
     [Table("User")]
-    public class User
+    public class User : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
+        //[Key]
+        //public int Id { get; set; }
 
         [MaxLength(50,ErrorMessage ="Max Length: 50 ")]
         [Display(Name = "User name:")]
@@ -29,11 +29,11 @@ namespace NewsPortal.Data.Model
         [Required]
         public string Password { get; set; }
 
-        [Display(Name = "Registration Date:")]
-        public DateTime RegistrationDate { get; set; }
+        //[Display(Name = "Registration Date:")]
+        //public DateTime RegistrationDate { get; set; }
 
-        [Display(Name = "Active")]
-        public bool Active { get; set; }
+        //[Display(Name = "Active")]
+        //public bool Active { get; set; }
 
         public virtual Role Role { get; set; }
     }

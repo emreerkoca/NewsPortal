@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace NewsPortal.Data.Model
 {
     [Table("News")]
-    public class News
+    public class News : BaseEntity
     {
-        [Key]
-        public int ID { get; set; }
+        //[Key]
+        //public int ID { get; set; }
 
         [Display(Name ="Title:")]
         public string Title { get; set; }
@@ -25,9 +25,9 @@ namespace NewsPortal.Data.Model
 
         public int Reads { get; set; }
 
-        public bool IsActive { get; set; }
+        //public bool IsActive { get; set; }
 
-        public DateTime UploadDate  { get; set; }
+        //public DateTime UploadDate  { get; set; }
 
         public virtual User User { get; set; }
 

@@ -37,7 +37,7 @@ namespace NewsPortal.Core.Repository
 
         public User GetById(int id)
         {
-            return _context.User.FirstOrDefault(x => x.Id == id);
+            return _context.User.FirstOrDefault(x => x.ID == id);
         }
 
         public void Insert(User obj)

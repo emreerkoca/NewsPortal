@@ -14,14 +14,22 @@
             <div class="sidebar-link-addon"><span class="badge bg-green">NEW</span></div>
         </li>
         <li class="has-submenu">
+            <a href="#"><i class="typcn typcn-tabs-outline"></i> <span>News</span></a>
+            <div class="sidebar-link-addon"><i class="typcn typcn-plus"></i></div>
+            <!-- Sidebar submenu -->
+            <ul class="sidebar-submenu">
+                <li><a href="@Url.Action("Index","News")">List News</a></li>
+                <li><a href="@Url.Action("Insert","News")">Insert News</a></li>
+            </ul>
+            <!-- /Sidebar submenu -->
+        </li>
+        <li class="has-submenu">
             <a href="#"><i class="typcn typcn-tabs-outline"></i> <span>Categories</span></a>
             <div class="sidebar-link-addon"><i class="typcn typcn-plus"></i></div>
             <!-- Sidebar submenu -->
             <ul class="sidebar-submenu">
-                <li><a href="@Url.Action("Index","Category")">Show Categories</a></li>
-                <li><a href="@Url.Action("Insert","Category")">Add Category</a></li>
-                <li><a href="sidebar_compact.html">Compact sidebar</a></li>
-                <li><a href="boxed.html">Boxed</a></li>
+                <li><a href="@Url.Action("Index","Category")">List Categories</a></li>
+                <li><a href="@Url.Action("Insert","Category")">Insert Category</a></li>
             </ul>
             <!-- /Sidebar submenu -->
         </li>

@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace NewsPortal.Data.Model
 {
     [Table("Role")]
-    public class Role
+    public class Role : BaseEntity
     {
-        [Key]
-        public int ID { get; set; }
+        //[Key]
+        //public int ID { get; set; }
 
         [Display(Name = "Role Name:")]
         [MinLength(3,ErrorMessage ="Min Length = 3 character"),MaxLength(150,ErrorMessage ="Max Length = 150 character")]

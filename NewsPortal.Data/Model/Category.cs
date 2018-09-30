@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace NewsPortal.Data.Model
 {
     [Table("Category")]
-    public class Category
+    public class Category : BaseEntity
     {
-        [Key]
-        public int ID { get; set; }
+        //[Key]
+        //public int ID { get; set; }
 
         [Required]
         [MinLength(2,ErrorMessage ="Category name can' t be less than {0} characters."), MaxLength(150, ErrorMessage = "Category name can' t be more than 150 characters")]
@@ -23,9 +23,9 @@ namespace NewsPortal.Data.Model
         [MinLength(2, ErrorMessage = "Url can' t be less than {0} characters."), MaxLength(150, ErrorMessage = "Url can' t be more than 150 characters")]
         public string URL { get; set; }
 
-        public bool IsActive { get; set; }
+        //public bool IsActive { get; set; }
 
-        public virtual User User { get; set; }
+        //public virtual User User { get; set; }
 
         public virtual ICollection<News> News { get; set; }
     }
