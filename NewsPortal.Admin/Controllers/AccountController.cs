@@ -33,7 +33,7 @@ namespace NewsPortal.Admin.Controllers
             {
                 if (userControl.Role.RoleName == "Admin")
                 {
-                    Session["UserEmail"] = userControl.Email;
+                    Session["UserID"] = userControl.ID;
                     return RedirectToAction("Index", "Home");
                 }
                 ViewBag.Message = "Unauthorized User";

@@ -29,11 +29,15 @@ namespace NewsPortal.Data.Model
 
         //public DateTime UploadDate  { get; set; }
 
+        public int UserID { get; set; }
+
         public virtual User User { get; set; }
 
         public string ImageStr { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
+
+        public int CategoryID { get; set; }
 
         public virtual Category Category { get; set; }
     }

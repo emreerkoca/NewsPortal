@@ -12,7 +12,7 @@ namespace NewsPortal.Admin.CustomFilter
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
             HttpContextWrapper wrapper = new HttpContextWrapper(HttpContext.Current);
-            var sessionControl = filterContext.HttpContext.Session["UserEmail"];
+            var sessionControl = filterContext.HttpContext.Session["UserID"];
             if(sessionControl == null)
             {
                 filterContext.Result = new RedirectToRouteResult(

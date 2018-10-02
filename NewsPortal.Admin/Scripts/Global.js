@@ -27,32 +27,6 @@
 
 }
 
-
-//function DeleteCategory() {
-//    var deleteID = $("#btnDeleteCategory").attr("data-id");
-
-//    $.ajax({
-//        url: "Delete/" + deleteID,
-//        type: "POST",
-//        dataType: "json",
-//        success: function (response) {
-//            if (response.Success) {
-//                bootbox.alert(response.Message, function () {
-//                    location.reload();
-//                });
-//            }
-//            else {
-//                bootbox.alert(response.Message, function () {
-//                    //TODO
-//                });
-//            }
-//        }
-//    });
-//}
-
-
-
-
 function UpdateCategory() {
     category = new Object();
     category.CategoryName = $("#categoryName").val();
@@ -81,6 +55,7 @@ function UpdateCategory() {
     })
 }
 
+//DeleteCategory
 $(document).on("click", "#btnDeleteCategory", function () {
     var deleteId = $(this).attr("data-id");
     var deletedRow = $(this).closest("tr");
@@ -96,3 +71,4 @@ $(document).on("click", "#btnDeleteCategory", function () {
         }
     })
 })
+
