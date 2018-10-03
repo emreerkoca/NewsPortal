@@ -15,13 +15,15 @@ namespace NewsPortal.Admin.Controllers
         private readonly INewsRepository _newsRepository;
         private readonly IUserRepository _userRepository;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IImageRepository _imageRepository;
         #endregion
 
-        public NewsController(INewsRepository newsRepository, IUserRepository userRepository, ICategoryRepository categoriRespository)
+        public NewsController(INewsRepository newsRepository, IUserRepository userRepository, ICategoryRepository categoriRespository, IImageRepository imageRepository)
         {
             _newsRepository = newsRepository;
             _userRepository = userRepository;
             _categoryRepository = categoriRespository;
+            _imageRepository = imageRepository;
         }
 
         // GET: News
@@ -41,7 +43,7 @@ namespace NewsPortal.Admin.Controllers
 
         [LoginFilter]
         [HttpPost]
-        public ActionResult Insert(News news, int categoryID, HttpPostedFileBase showcaseImage)
+        public ActionResult Insert(News news, int categoryID, HttpPostedFileBase showcaseImage, IEnumerable<HttpPostedFileBase> detailImages)
         {
             var sessionControl = HttpContext.Session["UserID"];
 
@@ -61,6 +63,32 @@ namespace NewsPortal.Admin.Controllers
                 }
                 _newsRepository.Insert(news);
                 _newsRepository.Save();
+
+                string multipleImages = System.IO.Path.GetExtension(Request.Files[1].FileName);
+                if(detailImages != null)
+                {
+                    foreach (var file in detailImages)
+                    {
+                        if(file.ContentLength > 0)
+                        {
+                            string fileName = Guid.NewGuid().ToString().Replace("-", "");
+                            string extension = System.IO.Path.GetExtension(Request.Files[1].FileName);
+                            string fullPath = "/External/News/" + fileName + extension;
+                            file.SaveAs(Server.MapPath(fullPath));
+
+                            var image = new Image
+                            {
+                                ImageUrl = fullPath
+                            };
+                            image.NewsID = news.ID;
+
+                            _imageRepository.Insert(image);
+                            _imageRepository.Save();
+                        }
+
+                      
+                    }
+                }
 
                 return View();
             }    

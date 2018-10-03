@@ -14,6 +14,8 @@ namespace NewsPortal.Data.Model
 
         public string ImageUrl { get; set; }
 
+        public int NewsID { get; set; }
+
         public News News { get; set; }
     }
 }
