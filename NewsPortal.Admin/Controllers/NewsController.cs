@@ -1,8 +1,10 @@
 ﻿using NewsPortal.Admin.CustomFilter;
 using NewsPortal.Core.Infstructure;
 using NewsPortal.Data.Model;
+using PagedList;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,9 +29,11 @@ namespace NewsPortal.Admin.Controllers
         }
 
         // GET: News
-        public ActionResult Index()
+        [LoginFilter]
+        public ActionResult Index(int page = 1)
         {
-            return View();
+            var newsList = _newsRepository.GetAll();
+            return View(newsList.OrderByDescending(x => x.ID).ToPagedList(page,20));
         }
 
         [LoginFilter]
@@ -65,7 +69,7 @@ namespace NewsPortal.Admin.Controllers
                 _newsRepository.Save();
 
                 string multipleImages = System.IO.Path.GetExtension(Request.Files[1].FileName);
-                if(detailImages != null)
+                if(multipleImages != "")
                 {
                     foreach (var file in detailImages)
                     {
@@ -85,12 +89,10 @@ namespace NewsPortal.Admin.Controllers
                             _imageRepository.Insert(image);
                             _imageRepository.Save();
                         }
-
-                      
                     }
                 }
-
-                return View();
+                TempData["Information"] = "News add operation is successful";
+                return RedirectToAction("Index", "News");
             }    
 
             return View();
@@ -101,6 +103,46 @@ namespace NewsPortal.Admin.Controllers
         {
             var categoryList = _categoryRepository.GetMany(x => x.ParentID == 0).ToList();
             ViewBag.Category = categoryList;
+        }
+        #endregion
+
+        #region Delete
+        public ActionResult Delete(int id)
+        {
+            News dbNews = _newsRepository.GetById(id);
+            var dbDetailImages = _imageRepository.GetMany(x => x.NewsID == id);
+            if(dbNews == null)
+            {
+                throw new Exception("News not found");
+            }
+         
+
+            string fileName = dbNews.ImageStr;
+            string filePath = Server.MapPath(fileName);
+            FileInfo file = new FileInfo(filePath);
+            if(file.Exists)
+            {
+                file.Delete();
+            }
+            
+            if(dbDetailImages != null)
+            {
+                foreach (var item in dbDetailImages)
+                {
+                    string detailImagePath = Server.MapPath(item.ImageUrl);
+                    FileInfo detailImage = new FileInfo(detailImagePath);
+                    if(detailImage.Exists)
+                    {
+                        detailImage.Delete();
+                    }
+                }
+            }
+
+            _newsRepository.Delete(id);
+            _newsRepository.Save();
+
+            TempData["Information"] = "Image delete operation successful.";
+            return RedirectToAction("Index", "News");
         }
         #endregion
     }
