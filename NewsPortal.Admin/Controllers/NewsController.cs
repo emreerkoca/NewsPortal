@@ -33,9 +33,13 @@ namespace NewsPortal.Admin.Controllers
         public ActionResult Index(int page = 1)
         {
             var newsList = _newsRepository.GetAll();
-            return View(newsList.OrderByDescending(x => x.ID).ToPagedList(page,20));
+            return View(newsList.OrderByDescending(x => x.ID).ToPagedList(page, 20));
         }
 
+
+
+
+        #region Insert
         [LoginFilter]
         [HttpGet]
         public ActionResult Insert()
@@ -44,20 +48,19 @@ namespace NewsPortal.Admin.Controllers
             return View();
         }
 
-
         [LoginFilter]
         [HttpPost]
         public ActionResult Insert(News news, int categoryID, HttpPostedFileBase showcaseImage, IEnumerable<HttpPostedFileBase> detailImages)
         {
             var sessionControl = HttpContext.Session["UserID"];
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 User user = _userRepository.GetById(Convert.ToInt32(sessionControl));
                 news.UserID = user.ID;
                 news.CategoryID = categoryID;
 
-                if(showcaseImage != null)
+                if (showcaseImage != null)
                 {
                     string fileName = Guid.NewGuid().ToString().Replace("-", "");
                     string extension = System.IO.Path.GetExtension(Request.Files[0].FileName);
@@ -69,11 +72,11 @@ namespace NewsPortal.Admin.Controllers
                 _newsRepository.Save();
 
                 string multipleImages = System.IO.Path.GetExtension(Request.Files[1].FileName);
-                if(multipleImages != "")
+                if (multipleImages != "")
                 {
                     foreach (var file in detailImages)
                     {
-                        if(file.ContentLength > 0)
+                        if (file.ContentLength > 0)
                         {
                             string fileName = Guid.NewGuid().ToString().Replace("-", "");
                             string extension = System.IO.Path.GetExtension(Request.Files[1].FileName);
@@ -93,10 +96,11 @@ namespace NewsPortal.Admin.Controllers
                 }
                 TempData["Information"] = "News add operation is successful";
                 return RedirectToAction("Index", "News");
-            }    
+            }
 
             return View();
         }
+        #endregion
 
         #region List Categories
         public void ListCategories(object category = null)
@@ -111,27 +115,27 @@ namespace NewsPortal.Admin.Controllers
         {
             News dbNews = _newsRepository.GetById(id);
             var dbDetailImages = _imageRepository.GetMany(x => x.NewsID == id);
-            if(dbNews == null)
+            if (dbNews == null)
             {
                 throw new Exception("News not found");
             }
-         
+
 
             string fileName = dbNews.ImageStr;
             string filePath = Server.MapPath(fileName);
             FileInfo file = new FileInfo(filePath);
-            if(file.Exists)
+            if (file.Exists)
             {
                 file.Delete();
             }
-            
-            if(dbDetailImages != null)
+
+            if (dbDetailImages != null)
             {
                 foreach (var item in dbDetailImages)
                 {
                     string detailImagePath = Server.MapPath(item.ImageUrl);
                     FileInfo detailImage = new FileInfo(detailImagePath);
-                    if(detailImage.Exists)
+                    if (detailImage.Exists)
                     {
                         detailImage.Delete();
                     }
@@ -143,6 +147,60 @@ namespace NewsPortal.Admin.Controllers
 
             TempData["Information"] = "Image delete operation successful.";
             return RedirectToAction("Index", "News");
+        }
+        #endregion
+
+        #region Confirm
+        //makes active passive, passive active
+        public ActionResult Confirm(int id)
+        {
+            News news = _newsRepository.GetById(id);
+            if (news.IsActive)
+            {
+                news.IsActive = false;
+                _newsRepository.Save();
+                TempData["Information"] = "Operation successul";
+                return RedirectToAction("Index", "News");
+            }
+            else if (!news.IsActive)
+            {
+                news.IsActive = true;
+                _newsRepository.Save();
+                TempData["Information"] = "Operation successul";
+                return RedirectToAction("Index", "News");
+            }
+            return View();
+        }
+        #endregion
+
+        #region Edit
+        [HttpGet]
+        [LoginFilter]
+        public ActionResult Edit(int id)
+        {
+            News news = _newsRepository.GetById(id);
+            if (news == null)
+            {
+                throw new Exception("News not found");
+            }
+            else
+            {
+                ListCategories();
+                return View(news);
+            }
+        }
+
+        [HttpPost]
+        [LoginFilter]
+        public ActionResult Edit(News news, int CategoryID, HttpPostedFileBase showcaseImage, IEnumerable<HttpPostedFileBase> detailImages)
+        {
+            News dbNews = _newsRepository.GetById(news.ID);
+            dbNews.IsActive = news.IsActive;
+            dbNews.ShortDescription = news.ShortDescription;
+            dbNews.Description = news.Description;
+            dbNews.Title = news.Title;
+            dbNews.CategoryID = CategoryID;
+            return View();
         }
         #endregion
     }

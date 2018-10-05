@@ -36,6 +36,7 @@
                                     <tr>
                                         <td><span class="label label-success">@item.ID</span></td>
                                         <td><img src="@item.ImageStr" alt="@item.Title" /></td>
+                                        <td>@item.Title</td>
                                         <td>@item.UploadDate.ToString("MM.dd.yyyy")</td>
                                         <td>@item.Category.CategoryName</td>
                                         <td>
@@ -50,8 +51,10 @@
                                         </td>
                                         <td>
                                             @*<button class="btn btn-default btn-sm">Edit</button>*@
-                                            <a href="@Url.Action("Update", "Category", new { ID = item.ID })" class="btn btn-default btn-sm">Edit</a>
+                                            <a href="@Url.Action("Edit", "News", new { ID = item.ID })" class="btn btn-default btn-sm">Edit</a>
                                             @*@Html.ActionLink("Delete","Delete", new { ID = item.ID }, new { onclick="return confirm('Are you sure want to delete record?')" })*@
+                                            <a href="@Url.Action("Confirm", "News", new { ID = item.ID })" class="btn btn-default btn-sm">Active / Passive</a>
+
                                             <a href="@Url.Action("Delete", "News", new { ID = item.ID })" class="btn btn-default btn-sm">Delete</a>
                                         </td>
                                     </tr>
