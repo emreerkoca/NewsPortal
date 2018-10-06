@@ -15,5 +15,6 @@ namespace NewsPortal.Data.DataContext
         public DbSet<News> News { get; set; }
         public DbSet<Image> Image { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<Tag> Tag { get; set; }
     }
 }

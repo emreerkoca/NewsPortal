@@ -59,6 +59,7 @@
     <Compile Include="Model\Image.cs" />
     <Compile Include="Model\News.cs" />
     <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

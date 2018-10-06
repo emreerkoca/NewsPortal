@@ -1,5 +1,6 @@
 ﻿using NewsPortal.Admin.CustomFilter;
 using NewsPortal.Core.Infstructure;
+using NewsPortal.Data.DataContext;
 using NewsPortal.Data.Model;
 using PagedList;
 using System;
@@ -13,19 +14,21 @@ namespace NewsPortal.Admin.Controllers
 {
     public class NewsController : Controller
     {
-        #region Database
+        #region Database 
         private readonly INewsRepository _newsRepository;
         private readonly IUserRepository _userRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IImageRepository _imageRepository;
+        private readonly ITagRepository _tagRepository;
         #endregion
 
-        public NewsController(INewsRepository newsRepository, IUserRepository userRepository, ICategoryRepository categoriRespository, IImageRepository imageRepository)
+        public NewsController(INewsRepository newsRepository, IUserRepository userRepository, ICategoryRepository categoriRespository, IImageRepository imageRepository, ITagRepository tagRepository)
         {
             _newsRepository = newsRepository;
             _userRepository = userRepository;
             _categoryRepository = categoriRespository;
             _imageRepository = imageRepository;
+            _tagRepository = tagRepository;
         }
 
         // GET: News
@@ -50,7 +53,7 @@ namespace NewsPortal.Admin.Controllers
 
         [LoginFilter]
         [HttpPost]
-        public ActionResult Insert(News news, int categoryID, HttpPostedFileBase showcaseImage, IEnumerable<HttpPostedFileBase> detailImages)
+        public ActionResult Insert(News news, int categoryID, HttpPostedFileBase showcaseImage, IEnumerable<HttpPostedFileBase> detailImages, string tag)
         {
             var sessionControl = HttpContext.Session["UserID"];
 
@@ -70,6 +73,9 @@ namespace NewsPortal.Admin.Controllers
                 }
                 _newsRepository.Insert(news);
                 _newsRepository.Save();
+                 
+
+                _tagRepository.AddTag(news.ID, tag);
 
                 string multipleImages = System.IO.Path.GetExtension(Request.Files[1].FileName);
                 if (multipleImages != "")

@@ -40,5 +40,7 @@ namespace NewsPortal.Data.Model
         public int CategoryID { get; set; }
 
         public virtual Category Category { get; set; }
+
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }
