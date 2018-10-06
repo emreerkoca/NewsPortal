@@ -53,6 +53,7 @@
     <Compile Include="Infstructure\INewsRepository.cs" />
     <Compile Include="Infstructure\IRepository.cs" />
     <Compile Include="Infstructure\IRoleRepository.cs" />
+    <Compile Include="Infstructure\ISliderRepository.cs" />
     <Compile Include="Infstructure\ITagRepository.cs" />
     <Compile Include="Infstructure\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Repository\ImageRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\NewsRepository.cs" />
+    <Compile Include="Repository\SliderRepository.cs" />
     <Compile Include="Repository\TagRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>

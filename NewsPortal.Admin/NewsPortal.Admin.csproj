@@ -499,6 +499,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="CustomFilter\LoginFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -553,6 +554,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\Slider\Insert.cshtml" />
+    <Content Include="Views\Slider\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -563,6 +566,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="External\News\" />
+    <Folder Include="External\Slider\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
