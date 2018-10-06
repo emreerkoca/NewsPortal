@@ -200,7 +200,71 @@ namespace NewsPortal.Admin.Controllers
             dbNews.Description = news.Description;
             dbNews.Title = news.Title;
             dbNews.CategoryID = CategoryID;
-            return View();
+
+            if (showcaseImage != null)
+            {
+                string fileName = dbNews.ImageStr;
+                string filePath = Server.MapPath(fileName);
+                FileInfo file = new FileInfo(filePath);
+
+                string newFileName = Guid.NewGuid().ToString().Replace("-", "");
+                string extension = System.IO.Path.GetExtension(Request.Files[0].FileName);
+                string fullPath = "/External/News/" + newFileName + extension;
+                Request.Files[0].SaveAs(Server.MapPath(fullPath));
+
+                dbNews.ImageStr = fullPath;
+            }
+            string multipleImgExt = System.IO.Path.GetExtension(Request.Files[1].FileName);
+            if(multipleImgExt != "")
+            {
+                foreach (var file in detailImages)
+                {
+                    string fileName = Guid.NewGuid().ToString().Replace("-", "");
+                    string fullPath = "/External/News/" + fileName + multipleImgExt;
+                    //Request.Files[1].SaveAs(Server.MapPath(fullPath));
+                    file.SaveAs(Server.MapPath(fullPath)); 
+                    var img = new Image
+                    {
+                        ImageUrl = fullPath
+                    };
+                    img.NewsID = dbNews.ID;
+                    img.UploadDate = DateTime.Now;
+
+                    _imageRepository.Insert(img);
+                    _imageRepository.Save();
+
+                }
+
+            }
+            _newsRepository.Save();
+
+            TempData["Information"] = "Edit operation successful";
+            return RedirectToAction("Index", "News");
+        }
+        #endregion
+
+        #region DeleteImage
+        public ActionResult DeleteImage(int id)
+        {
+            Image dbImage = _imageRepository.GetById(id);
+            if(dbImage == null)
+            {
+                throw new Exception("Image not found.");
+            }
+
+            string fileName = dbImage.ImageUrl;
+            string path = Server.MapPath(fileName);
+            FileInfo file = new FileInfo(path);
+            if(file.Exists)
+            {
+                file.Delete();
+            }
+
+
+            _imageRepository.Delete(id);
+            _imageRepository.Save();
+            TempData["Information"] = "Image Delete operation succesful.";
+            return RedirectToAction("Index", "News");
         }
         #endregion
     }

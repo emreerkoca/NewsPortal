@@ -60,8 +60,12 @@
                             <div class="form-group">
                                 <label for="categoryUrl">Showcase Image</label>
                                 <input type="file" name="showcaseImage" accept="image/*" class="form-control" />
-                            
-                                <img src="@Model.ImageStr" style="width:100px" />
+                                @foreach (var item in Model.Images.Where(x => x.NewsID == Model.ID))
+                                {
+                                    <img src="@item.ImageUrl" style="width:100px" />
+                                    <label><a href="@Url.Action("DeleteImage","News", new { ID = item.ID })">Delete</a></label>
+
+                                }
                             </div>
 
                             <div class="form-group">
