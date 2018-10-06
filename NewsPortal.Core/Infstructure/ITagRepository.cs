@@ -11,7 +11,7 @@ namespace NewsPortal.Core.Infstructure
     {
         IQueryable<Tag> Tags(string[] tags);
 
-        void AddTag(int newsID, string tag);
+        void AddTags(int newsID, string tag);
 
         void AddNewsTag(int newsID, string[] tags);
      }

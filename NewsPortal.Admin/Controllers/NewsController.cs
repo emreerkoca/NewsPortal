@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -75,7 +76,7 @@ namespace NewsPortal.Admin.Controllers
                 _newsRepository.Save();
                  
 
-                _tagRepository.AddTag(news.ID, tag);
+                _tagRepository.AddTags(news.ID, tag);
 
                 string multipleImages = System.IO.Path.GetExtension(Request.Files[1].FileName);
                 if (multipleImages != "")
@@ -184,28 +185,47 @@ namespace NewsPortal.Admin.Controllers
         [LoginFilter]
         public ActionResult Edit(int id)
         {
-            News news = _newsRepository.GetById(id);
-            if (news == null)
+            News dbNews = _newsRepository.GetById(id);
+            #region Tag
+            var pullTags = dbNews.Tags.Select(x => x.TagName).ToArray();
+
+            NewsTag newsTag = new NewsTag
+            {
+                News = dbNews,
+                Tags = _tagRepository.GetAll(),
+                PullTags = pullTags
+            };
+
+            StringBuilder strBuilder = new StringBuilder();
+            foreach (var tag in newsTag.PullTags)
+            {
+                strBuilder.Append(tag);
+                strBuilder.Append(",");
+            }
+            newsTag.TagName = strBuilder.ToString(); 
+            #endregion
+
+            if (dbNews == null)
             {
                 throw new Exception("News not found");
             }
             else
             {
                 ListCategories();
-                return View(news);
+                return View(newsTag);
             }
         }
 
         [HttpPost]
         [LoginFilter]
-        public ActionResult Edit(News news, int CategoryID, HttpPostedFileBase showcaseImage, IEnumerable<HttpPostedFileBase> detailImages)
+        public ActionResult Edit(News news, HttpPostedFileBase showcaseImage, IEnumerable<HttpPostedFileBase> detailImages, string TagName)
         {
             News dbNews = _newsRepository.GetById(news.ID);
             dbNews.IsActive = news.IsActive;
             dbNews.ShortDescription = news.ShortDescription;
             dbNews.Description = news.Description;
             dbNews.Title = news.Title;
-            dbNews.CategoryID = CategoryID;
+            dbNews.CategoryID = news.CategoryID;
 
             if (showcaseImage != null)
             {
@@ -242,6 +262,7 @@ namespace NewsPortal.Admin.Controllers
                 }
 
             }
+            _tagRepository.AddTags(dbNews.ID, TagName);
             _newsRepository.Save();
 
             TempData["Information"] = "Edit operation successful";

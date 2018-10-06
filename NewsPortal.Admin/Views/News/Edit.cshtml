@@ -1,4 +1,4 @@
-﻿@model NewsPortal.Data.Model.News
+﻿@model NewsPortal.Data.Model.NewsTag
 @{
     ViewBag.Title = "Edit News";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,15 +19,15 @@
                 <div class="panel panel-default">
                     <header class="panel-heading">@ViewBag.Title</header>
                     <div class="panel-body">
-                        @Html.HiddenFor(x => x.ID)
+                        @Html.HiddenFor(x => x.News.ID)
                         <form role="form">
                             <div class="form-group">
                                 <label for="category">Category</label>
-                                @Html.DropDownListFor(model => model.CategoryID, new SelectList(ViewBag.Category, "ID", "CategoryName"), ("Select"), new { @class = "form-control", id = "ParentID" })
+                                @Html.DropDownListFor(model => model.News.CategoryID, new SelectList(ViewBag.Category, "ID", "CategoryName"), ("Select"), new { @class = "form-control", id = "ParentID" })
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">News Header </label>
-                                @Html.TextBoxFor(x => x.Title, new { @class = "form-control", id = "Title", placeHolder = "News Title" })
+                                @Html.TextBoxFor(x => x.News.Title, new { @class = "form-control", id = "Title", placeHolder = "News Title" })
                             </div>
                             <div class="form-group">
                                 <label for="categoryUrl">Short Description</label>
@@ -58,9 +58,13 @@
                                 </script>
                             </div>
                             <div class="form-group">
+                                <label>Tags</label>
+                                @Html.TextAreaFor(x => x.TagName, new { @class = "form-control" , data_role ="tagsInput" })
+                            </div>
+                            <div class="form-group">
                                 <label for="categoryUrl">Showcase Image</label>
                                 <input type="file" name="showcaseImage" accept="image/*" class="form-control" />
-                                @foreach (var item in Model.Images.Where(x => x.NewsID == Model.ID))
+                                @foreach (var item in Model.News.Images.Where(x => x.NewsID == Model.News.ID))
                                 {
                                     <img src="@item.ImageUrl" style="width:100px" />
                                     <label><a href="@Url.Action("DeleteImage","News", new { ID = item.ID })">Delete</a></label>

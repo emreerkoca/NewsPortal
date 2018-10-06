@@ -58,6 +58,7 @@
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Image.cs" />
     <Compile Include="Model\News.cs" />
+    <Compile Include="Model\NewsTag.cs" />
     <Compile Include="Model\Role.cs" />
     <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\User.cs" />

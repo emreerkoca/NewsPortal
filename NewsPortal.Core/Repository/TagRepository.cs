@@ -69,7 +69,7 @@ namespace NewsPortal.Core.Repository
             return _context.Tag.Where(x => tags.Contains(x.TagName));
         }
 
-        public void AddTag(int newsID, string tagsStr)
+        public void AddTags(int newsID, string tagsStr)
         {
             if(!string.IsNullOrEmpty(tagsStr))
             {
