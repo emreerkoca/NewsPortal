@@ -504,6 +504,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ImageUpload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -556,6 +557,7 @@
     <Content Include="Views\News\Edit.cshtml" />
     <Content Include="Views\Slider\Insert.cshtml" />
     <Content Include="Views\Slider\Index.cshtml" />
+    <Content Include="Views\Slider\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

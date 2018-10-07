@@ -48,8 +48,10 @@
                                             }
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("Edit", "News", new { ID = item.ID })" class="btn btn-default btn-sm">Edit</a>
-                                            <a href="@Url.Action("Delete", "News", new { ID = item.ID })" class="btn btn-default btn-sm">Delete</a>
+                                            <a href="@Url.Action("Edit", "Slider", new { ID = item.ID })" class="btn btn-default btn-sm">Edit</a>
+                                            @*<a href="@Url.Action("Delete", "Slider", new { ID = item.ID })" class="btn btn-default btn-sm">Delete</a>*@
+                                            <a href="#" data-id="@item.ID" id="deleteSlider" class="btn btn-default btn-sm">Delete</a>
+
                                         </td>
                                     </tr>
                                 }
@@ -65,3 +67,26 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(document).on("click", "#deleteSlider", function () {
+        pullSlider = new Object();
+        pullSlider.ID = $(this).attr("data-id");
+
+        var deleteTr = $(this).closest("tr");
+
+        $.ajax({
+            url: "/Slider/Delete",
+            type: "POST",
+            data: pullSlider,
+            dataType: 'json',
+            success: function (response) {
+                if (response.Success) {
+                    $.notify(response.Message);
+                    deleteTr.fadeOut("300", function () {
+                        deleteTr.remove();
+                    })
+                }
+            }
+        })
+    })
+</script>
